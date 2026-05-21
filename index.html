@@ -598,6 +598,44 @@
     .footer-title { font-size: 0.75rem; color: var(--gold); margin-bottom: 1rem; }
     .footer-copy { font-size: 0.7rem; color: var(--text-muted); }
 
+    /* ── Certifications ── */
+    #certifications { padding: 7rem 0; position: relative; overflow: hidden; }
+    .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+    .cert-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 2rem;
+      transition: border-color 0.3s, transform 0.3s;
+      backdrop-filter: blur(4px);
+      position: relative;
+      overflow: hidden;
+    }
+    .cert-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(184,134,11,0.06), transparent);
+      transition: left 0.5s ease;
+    }
+    .cert-card:hover { border-color: rgba(184,134,11,0.45); transform: translateY(-4px); }
+    .cert-card:hover::after { left: 140%; }
+    .cert-issuer { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem; }
+    .cert-name { font-family: var(--serif); font-size: 1.25rem; color: var(--text); margin-bottom: 0.5rem; }
+    .cert-meta { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
+    .cert-badge { font-size: 0.65rem; color: var(--text-muted); background: rgba(0,0,0,0.3); border: 1px solid var(--border); padding: 0.25rem 0.75rem; display: flex; align-items: center; gap: 0.4rem; }
+    .cert-badge.score { color: var(--gold); border-color: rgba(184,134,11,0.25); background: rgba(184,134,11,0.06); }
+
+    /* ── Memberships ── */
+    #memberships { padding: 7rem 0; background: rgba(0,0,0,0.2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
+    .mem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; }
+    .mem-card { background: var(--bg-card); border: 1px solid var(--border); padding: 1.75rem; transition: border-color 0.3s, transform 0.3s; backdrop-filter: blur(4px); display: flex; gap: 1rem; align-items: flex-start; }
+    .mem-card:hover { border-color: rgba(184,134,11,0.4); transform: translateX(4px); }
+    .mem-icon { flex-shrink: 0; width: 40px; height: 40px; background: rgba(184,134,11,0.08); border: 1px solid rgba(184,134,11,0.2); display: flex; align-items: center; justify-content: center; color: var(--gold); }
+    .mem-role { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.3rem; }
+    .mem-title { font-family: var(--serif); font-size: 1rem; color: var(--text); line-height: 1.4; }
+
     /* ── Animations ── */
     .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
@@ -655,6 +693,8 @@
         <button onclick="scrollToSection('experience')">Experience</button>
         <button onclick="scrollToSection('skills')">Skills</button>
         <button onclick="scrollToSection('achievements')">Achievements</button>
+        <button onclick="scrollToSection('certifications')">Certifications</button>
+        <button onclick="scrollToSection('memberships')">Memberships</button>
       </div>
       <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMobile()">
         <span></span><span></span><span></span>
@@ -666,6 +706,8 @@
       <button onclick="scrollToSection('experience');closeMobile()">Experience</button>
       <button onclick="scrollToSection('skills');closeMobile()">Skills</button>
       <button onclick="scrollToSection('achievements');closeMobile()">Achievements</button>
+      <button onclick="scrollToSection('certifications');closeMobile()">Certifications</button>
+      <button onclick="scrollToSection('memberships');closeMobile()">Memberships</button>
     </div>
   </nav>
 
@@ -676,7 +718,7 @@
         <div>
           <div class="hero-badge fade-up">
             <span class="hero-badge-dot"></span>
-            Available for Opportunities
+            Enthusiast for Refinement
           </div>
           <h1 class="hero-name fade-up fade-up-delay-1">Subham Sarthak<br>Sahoo</h1>
           <p class="hero-title fade-up fade-up-delay-2">Management Student | Passionate Learner | Growth Aspirant</p>
@@ -684,7 +726,7 @@
             BBA student at Centurion University — building a sharp edge in financial analysis, strategic decision-making, and competitive leadership. 20+ competitions. 2 national conferences. One clear direction: excellence.
           </p>
           <div class="hero-actions fade-up fade-up-delay-4">
-            <button class="btn btn-outline" onclick="scrollToSection('contact')">Contact Me</button>
+            <button class="btn btn-outline" onclick="scrollToSection('contact')">Contact</button>
             <a href="https://drive.google.com/drive/folders/1yJoF8RvqLdzV3mf3DJDvBReZkYNN32jo?usp=sharing" target="_blank" class="btn btn-gold-outline">
               View Certificates
             </a>
@@ -713,7 +755,7 @@
         </div>
         <div class="stat-item">
           <div class="stat-value">4+</div>
-          <div class="stat-label">Leadership Roles</div>
+          <div class="stat-label">Campus Coordinatorships</div>
         </div>
         <div class="stat-item">
           <div class="stat-value">2</div>
@@ -754,8 +796,8 @@
             <div class="highlight-icon">
               <svg class="icon" width="22" height="22" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             </div>
-            <div class="highlight-title">4+ Leadership Roles</div>
-            <div class="highlight-desc">Guiding teams to success</div>
+            <div class="highlight-title">4+ Campus Coordinatorships</div>
+            <div class="highlight-desc">Developing spirit of team work</div>
           </div>
           <div class="highlight-item">
             <div class="highlight-icon">
@@ -1054,6 +1096,106 @@
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/><polyline points="9 9 10 9 11 9"/></svg>
               View Report
             </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Certifications ── -->
+  <section id="certifications">
+    <span class="section-watermark">07</span>
+    <div class="container">
+      <div class="section-heading slide-left">
+        <h2>Certifications</h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="cert-grid">
+        <div class="cert-card fade-up">
+          <div class="cert-issuer">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+            NPTEL
+          </div>
+          <div class="cert-name">Business Marketing: Technology Focus</div>
+          <div class="cert-meta">
+            <span class="cert-badge">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              2025
+            </span>
+            <span class="cert-badge score">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              Score: 79%
+            </span>
+          </div>
+          <a href="https://drive.google.com/file/d/1z3U_NxYszNBSPxVoMpuhYFcNOqA93rrL/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-gold-outline" style="width:fit-content;font-size:0.65rem;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            View Certificate
+          </a>
+        </div>
+        <div class="cert-card fade-up" style="transition-delay:0.1s;">
+          <div class="cert-issuer">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+            Great Learning
+          </div>
+          <div class="cert-name">MS Excel Certification</div>
+          <div class="cert-meta">
+            <span class="cert-badge">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              2024
+            </span>
+          </div>
+          <a href="https://drive.google.com/file/d/1AldpDMX6oTj04ibAelZXPQZGFM2hVuDc/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-gold-outline" style="width:fit-content;font-size:0.65rem;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            View Certificate
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Memberships & Coordinatorships ── -->
+  <section id="memberships">
+    <span class="section-watermark">08</span>
+    <div class="container">
+      <div class="section-heading slide-left">
+        <div class="section-line left"></div>
+        <h2>Member &amp; Coordinator</h2>
+      </div>
+      <div class="mem-grid">
+        <div class="mem-card fade-up">
+          <div class="mem-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div>
+            <div class="mem-role">Member</div>
+            <div class="mem-title">Debate Club – Centurion University</div>
+          </div>
+        </div>
+        <div class="mem-card fade-up" style="transition-delay:0.08s;">
+          <div class="mem-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          </div>
+          <div>
+            <div class="mem-role">OC Member</div>
+            <div class="mem-title">CGDS MUN 2024</div>
+          </div>
+        </div>
+        <div class="mem-card fade-up" style="transition-delay:0.16s;">
+          <div class="mem-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div>
+            <div class="mem-role">Coordinator</div>
+            <div class="mem-title">Alumni Cell – SOM, CUTM</div>
+          </div>
+        </div>
+        <div class="mem-card fade-up" style="transition-delay:0.24s;">
+          <div class="mem-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </div>
+          <div>
+            <div class="mem-role">Member</div>
+            <div class="mem-title">Social Media Team – Centurion University</div>
           </div>
         </div>
       </div>
